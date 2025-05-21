@@ -19,10 +19,11 @@ def home():
 def browse():
     size = request.args.get('size')
     color = request.args.get('color')
+    type = request.args.get('type')
     sort_by = request.args.get('sort_by')
     sort_direction = request.args.get('sort_direction','asc')
-    items = get_filtered_clothing_items(size=size, color=color, sort_by = sort_by, sort_direction = sort_direction)
-    return render_template('browse.html', items=items, selected_size=size, selected_color=color, selected_sort_by = sort_by, selected_sort_direction = sort_direction)
+    items = get_filtered_clothing_items(size=size, color=color, type = type, sort_by = sort_by, sort_direction = sort_direction)
+    return render_template('browse.html', items=items, selected_size=size, selected_color=color, selected_type = type, selected_sort_by = sort_by, selected_sort_direction = sort_direction)
 
 @app.route('/add-to-cart/<int:item_id>')
 def add_to_cart_route(item_id):
