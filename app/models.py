@@ -13,7 +13,7 @@ def get_all_clothing_items():
         return cur.fetchall()
 
 
-def get_filtered_clothing_items(size=None, color=None):
+def get_filtered_clothing_items(size=None, color=None, sort_by=None, sort_direction="asc"):
     with conn.cursor() as cur:
         query = "SELECT id, name, type, size, color, price, image_url FROM clothing_item WHERE 1=1"
         params = []
@@ -24,6 +24,17 @@ def get_filtered_clothing_items(size=None, color=None):
         if color:
             query += " AND color = %s"
             params.append(color)
+
+
+        #-------------------Adding a function to sort by alphabetical name, and price--------------#
+        valid_sort_fields=["name", "price"]
+        if sort_by in valid_sort_fields:
+            sort_direction = sort_direction.lower()
+            if sort_direction not in ["asc", "desc"]:
+                sort_direction = "asc"
+            query += f" ORDER BY {sort_by} {sort_direction}"
+        #------------------------------------------------------------------------------------------#
+
 
         cur.execute(query, params)
         return cur.fetchall()
