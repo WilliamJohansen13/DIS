@@ -15,12 +15,12 @@
       
       <!-- Color selection  -->
        <div class="col-md-2">
-         <label class="form-label">Size</label>
+         <label class="form-label">Color</label>
           <select class="form-select" name="size">
-            <option value="">Include all</option>
-            <option value="Small" {% if selected_size == 'small' %}selected{% endif %}>Small</option>
-            <option value="Medium" {% if selected_size == 'medium' %}selected{% endif %}>Medium</option>
-            <option value="Large" {% if selected_size == 'large' %}selected{% endif %}>Large</option>
+            <option value="">All</option>
+            <option value="Red" {% if selected_color == 'red' %}selected{% endif %}>Red</option>
+            <option value="Blue" {% if selected_color == 'blue' %}selected{% endif %}>Blue</option>
+            <option value="Yellow" {% if selected_color == 'yellow' %}selected{% endif %}>Yellow</option>
           </select>  
        </div>
 
